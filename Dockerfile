@@ -2,7 +2,7 @@
 FROM node:14
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /home
 
 # Copy package.json and package-lock.json (or yarn.lock) into the working directory
 COPY package*.json ./
@@ -13,10 +13,5 @@ RUN npm install
 # Bundle the app's source code inside the Docker image
 COPY . .
 
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
-
-# Define the command to run your app using CMD which defines your runtime
-CMD [ "node", "index.js" ]
 
 

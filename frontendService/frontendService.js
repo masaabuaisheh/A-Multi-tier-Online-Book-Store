@@ -4,8 +4,8 @@ const axios = require("axios");
 const app = express();
 app.use(express.json());
 
-const CATALOG_URL = "http://localhost:4401";
-const ORDER_URL = "http://localhost:4402";
+const CATALOG_URL = "http://catalog:4401";
+const ORDER_URL = "http://order:4402";
 
 app.get("/search/:topic", async (req, res) => {
   try {
