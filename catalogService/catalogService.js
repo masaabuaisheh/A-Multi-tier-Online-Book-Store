@@ -16,6 +16,8 @@ app.get("/search/:topic", (req, res) => {
       return res.status(500).send("Failed to retrieve books");
     }
     res.json(results);
+    console.log("Fetched successfully");
+    console.log(results);
   });
 });
 
