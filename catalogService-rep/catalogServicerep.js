@@ -51,7 +51,7 @@ app.put("/update/:id", (req, res) => {
 });
 
 // Start Catalog Service Server
-app.listen(4401, function () {
-  console.log("Catalog Service started on Port 4401");
+app.listen(4403, function () {
+  console.log("Catalog Service started on Port 4403");
  
 });
