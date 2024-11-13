@@ -1,5 +1,4 @@
 require("dotenv").config({ path: "../.env" });
-
 const db = require("../config/dbconnection");
 const express = require("express");
 const app = express();
@@ -16,8 +15,12 @@ app.get("/search/:topic", (req, res) => {
       return res.status(500).send("Failed to retrieve books");
     }
     res.json(results);
+<<<<<<< HEAD
     console.log("Fetched successfully");
     console.log(results);
+=======
+  
+>>>>>>> new-feature-branch
   });
 });
 
@@ -36,6 +39,7 @@ app.get("/info/:id", (req, res) => {
       return res.status(404).send("There is no book with this id");
     }
     res.json(results);
+ 
   });
 });
 
@@ -54,4 +58,5 @@ app.put("/update/:id", (req, res) => {
 // Start Catalog Service Server
 app.listen(4401, function () {
   console.log("Catalog Service started on Port 4401");
+ 
 });
