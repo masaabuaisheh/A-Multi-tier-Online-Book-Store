@@ -17,15 +17,11 @@ app.get("/search/:topic", (req, res) => {
       return res.status(500).send("Failed to retrieve books");
     }
     res.json(results);
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     console.log("Fetched successfully");
     console.log(results);
-=======
-  
->>>>>>> new-feature-branch
-=======
->>>>>>> testing-docker
+
+
   });
 });
 
@@ -64,8 +60,8 @@ app.put("/update/:id", (req, res) => {
     dbcatalogrep.query(query, [quantity, price, id], (repErr) => {
       if (repErr) {
         console.error("Error updating catalog in replica database:", repErr);
-        // Optionally, you could notify about replication errors or trigger alerts
       }
+      
 
       // Send success response regardless of replica update status
       res.json({ message: "Book updated successfully in primary database and attempted update in replica" });
