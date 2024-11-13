@@ -9,10 +9,7 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE,
 });
 
-// console.log("Host:", process.env.DATABASE_HOST);
-// console.log("User:", process.env.DATABASE_USER);
-// console.log("Password:", process.env.DATABASE_PASSWORD);
-// console.log("Database:", process.env.DATABASE);
+
 
 connection.connect((error) => {
   if (error) {

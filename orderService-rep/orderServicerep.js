@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "../.env" });
 const dbCatalog = require("../config/dbconnection"); // catalog database
+<<<<<<< HEAD
 const dbOrder = require("../config/dbconnection3"); // order database
 const express = require("express");
 const app = express();
@@ -8,6 +9,19 @@ app.post("/purchase/:id", (req, res) => {
   const id = req.params.id;
 
   // Check stock in the catalog database
+=======
+const dbCatalogrep = require("../config/dbconnection4"); // catalog replica database
+const dbOrder = require("../config/dbconnection2"); // order database
+const dbOrderrep = require("../config/dbconnection3"); // order replica database
+const express = require("express");
+const app = express();
+
+
+app.post("/purchase/:id", (req, res) => {
+  const id = req.params.id;
+
+  // Check stock in the catalog primary database
+>>>>>>> testing-docker
   const checkStockQuery = "SELECT quantity FROM catalog WHERE id = ?";
   dbCatalog.query(checkStockQuery, [id], (err, results) => {
     if (err) {
@@ -71,8 +85,27 @@ app.post("/purchase/:id", (req, res) => {
                     return;
                   }
 
+<<<<<<< HEAD
                   // Success: Both transactions committed
                   res.json({ message: "Purchase successful" });
+=======
+                  // Replicate changes to catalog replica
+                  dbCatalogrep.query(updateStockQuery, [id], (repErr) => {
+                    if (repErr) {
+                      console.error("Error updating stock in catalog replica:", repErr);
+                    }
+
+                    // Replicate changes to order replica
+                    dbOrderrep.query(logOrderQuery, [id], (repErr) => {
+                      if (repErr) {
+                        console.error("Error logging order in order replica:", repErr);
+                      }
+
+                      // Success: Both primary transactions committed, replica updates attempted
+                      res.json({ message: "Purchase successful" });
+                    });
+                  });
+>>>>>>> testing-docker
                 });
               });
             });
@@ -85,6 +118,12 @@ app.post("/purchase/:id", (req, res) => {
   });
 });
 
+
+// Start Order Service Server
+const PORT = 4402;
+app.listen(PORT, () => {
+  console.log(`Order Service started on Port ${PORT}`);
+});
 
 // Start Order Service Server
 app.listen(4404, function () {
