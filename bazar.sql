@@ -38,12 +38,13 @@ CREATE TABLE `catalog` (
 --
 -- Dumping data for table `catalog`
 --
-
 INSERT INTO `catalog` (`id`, `title`, `quantity`, `price`, `topic`) VALUES
 (1, 'How to get a good grade in DOS in 40 minutes a day', 8, 50.00, 'distributed systems'),
 (2, 'RPCs for Noobs', 9, 30.00, 'distributed systems'),
 (3, 'Xen and the Art of Surviving Undergraduate School', 3, 25.00, 'undergraduate school'),
-(4, 'Cooking for the Impatient Undergrad', 7, 15.00, 'undergraduate school');
+(4, 'Cooking for the Impatient Undergrad', 7, 15.00, 'undergraduate school'),
+(5, 'Surviving College with Minimal Effort', 4, 20.00, 'college survival'),
+(6, 'The Undergrad’s Guide to Quick Meals', 10, 18.00, 'college cooking');
 
 -- --------------------------------------------------------
 
@@ -93,13 +94,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `catalog`
 --
 ALTER TABLE `catalog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables

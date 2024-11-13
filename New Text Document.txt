@@ -1,0 +1,8 @@
+docker build -t bazar .
+docker network create bazarNetwork
+docker run --name=catalog -it -p 4401:4401 --network=bazarNetwork -v .:/home bazar node catalogService/catalogService.js
+docker run --name=frontend -it -p 3000:3000 --network=bazarNetwork -v .:/home bazar node frontendService/frontendService.js
+docker run --name=order -it -p 4402:4402 --network=bazarNetwork -v .:/home bazar2 node orderService/orderService.js
+///
+docker run --name=catalogrep -it -p 4403:4403 --network=bazarNetwork -v .:/home bazar node catalogService-rep/catalogServicerep.js
+docker run --name=orderrep -it -p 4404:4404 --network=bazarNetwork -v .:/home bazar2 node orderService-rep/orderServicerep.js
